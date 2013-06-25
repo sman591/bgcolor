@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Background Colorpicker Previewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="//favicon.ico" type="image/x-icon" sizes="16x16">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" media="screen" type="text/css" href="colorpicker/css/colorpicker.css" />
+    <style type="text/css">
+        body {
+            background: black;
+        }
+    	.content {
+    		background: #fff;
+    		-webkit-border-radius: 6px;
+            border-radius: 6px;
+            margin-top: 40px;
+            padding: 1px 20px 20px;
+            text-align: center;
+    	}
+        .holder {
+            width: 160px;
+            margin: 0 auto;
+            clear: both;
+        }
+        .color-code {
+            padding: 8px 0 0;
+            float: right;
+            font-family: "Courier New";
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #colorSelector {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            background: url(colorpicker/images/select.png);
+            float: left;
+        }
+        #colorSelector div {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 30px;
+            height: 30px;
+            background: url(colorpicker/images/select.png) center;
+        }
+        .footer {
+            clear: both;
+            color: #999;
+            margin: 65px 0 0;
+            border-top: 1px solid #bbb;
+            padding: 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+	<div class="row-fluid">
+		<div class="span6 offset3 content">
+			<h3 class="page-header">Background Colorpicker Previewer</h3>
+			<p>Use the colorpicker below to select &amp; preview your new color.</p>
+            <div class="holder">
+                <div class="color-code">#000000</div><div id="colorSelector"><div style="background-color: #0000ff"></div></div>
+            </div>
+            <p class="footer">brought to you by <a href="http://stuartolivera.com">stuart olivera</a>&nbsp; | &nbsp;available on <a href="">github</a></p>
+		</div>
+	</div>
+
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="colorpicker/js/colorpicker.js"></script>
+
+    <script type="text/javascript">
+
+        $('#colorSelector').ColorPicker({
+            color: '#000000',
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(200);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(200);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('.color-code').text('#' + hex);
+                $('#colorSelector div').css('backgroundColor', '#' + hex);
+                $('body').css('backgroundColor', '#' + hex);
+            }
+        });
+
+    </script>
+</body>
+</html>
