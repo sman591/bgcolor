@@ -2,7 +2,7 @@ Background Colorpicker Previewer
 ====
 
 View it live:
-http://stuartolivera.com/bgcolor/
+https://sman591.github.io/bgcolor/
 
 Notes: 
 
